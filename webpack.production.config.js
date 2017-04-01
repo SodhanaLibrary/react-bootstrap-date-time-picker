@@ -60,7 +60,7 @@ module.exports = {
 		}),
 		new HtmlWebpackPlugin({
 			template: './src/template.html',
-			title: 'React Gif Preview'
+			title: 'React bootstrap date time picker'
 		}),
 		new webpack.optimize.DedupePlugin()
 	]

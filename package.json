@@ -1,8 +1,8 @@
 {
-  "name": "react-fit-items-popover",
+  "name": "react-bootstrap-date-time-picker",
   "version": "0.0.1",
-  "description": "Show tooltip on text overflow using ReactJS",
-  "main": "./lib/react-fit-items-popover.js",
+  "description": "React Bootstrap Date Time Picker",
+  "main": "./lib/react-bootstrap-date-time-picker.js",
   "scripts": {
     "build": "webpack --config webpack.production.config.js --progress --profile --colors",
     "start": "webpack-dev-server --progress --profile --colors",
@@ -11,11 +11,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/SodhanaLibrary/react-fit-items-popover"
+    "url": "https://github.com/SodhanaLibrary/react-bootstrap-date-time-picker"
   },
   "author": "SodhanaLibrary",
   "license": "MIT",
-  "homepage": "https://github.com/SodhanaLibrary/react-fit-items-popover",
+  "homepage": "https://github.com/SodhanaLibrary/react-bootstrap-date-time-picker",
   "dependencies": {
     "classnames": "^2.2.5",
     "moment": "^2.18.1",

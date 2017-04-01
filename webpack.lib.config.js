@@ -3,14 +3,14 @@ var webpack = require("webpack");
 
 module.exports = {
   entry : {
-    'react-fit-items-popover':'./src/fit-items-popover/fit-items-popover.js',
-    'react-fit-items-popover.min':'./src/fit-items-popover/fit-items-popover.js'
+    'react-bootstrap-date-time-picker':'./src/date-time-picker/DateTimePicker.js',
+    'react-bootstrap-date-time-picker.min':'./src/date-time-picker/DateTimePicker.js'
   },
 
   output: {
     path: './lib',
     filename: '[name].js',
-    library: 'react-fit-items-popover',
+    library: 'react-bootstrap-date-time-picker',
     libraryTarget: 'umd'
   },
 
@@ -66,7 +66,7 @@ module.exports = {
  plugins: [
     new ExtractTextPlugin("./[name].css"),
     new webpack.optimize.UglifyJsPlugin({
-     exclude:['react-fit-items-popover.js'],
+     exclude:['react-bootstrap-date-time-picker.js'],
      minimize: true,
      compress: { warnings: false }
    })
