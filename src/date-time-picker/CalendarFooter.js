@@ -156,25 +156,25 @@ class CalendarFooter extends React.Component {
       {isHrVisible && <FormGroup controlId="date-time-picker__input-month">
         <ControlLabel>Hr</ControlLabel>
         <FormControl onChange={this.onChangeHours} value={is12HoursFormat ? displayDate.getHours() % 12 : displayDate.getHours()} componentClass="select" placeholder="select">
-          {calcHours.map((month) => <option value={month}>{month}</option>)}
+          {calcHours.map((month) => <option key={month} value={month}>{month}</option>)}
         </FormControl>
       </FormGroup>}
       {isMinVisible && <FormGroup controlId="date-time-picker__input-month">
         <ControlLabel>Min</ControlLabel>
         <FormControl onChange={this.onChangeMinutes} componentClass="select" placeholder="select" value={displayDate.getMinutes()}>
-          {calcMinutes.map((year) => <option value={year}>{year}</option>)}
+          {calcMinutes.map((year) => <option key={year} value={year}>{year}</option>)}
         </FormControl>
       </FormGroup>}
       {isSecVisible && <FormGroup controlId="date-time-picker__input-month">
         <ControlLabel>Sec</ControlLabel>
         <FormControl onChange={this.onChangeSeconds} componentClass="select" placeholder="select" value={displayDate.getSeconds()}>
-          {calcSeconds.map((year) => <option value={year}>{year}</option>)}
+          {calcSeconds.map((year) => <option key={year} value={year}>{year}</option>)}
         </FormControl>
       </FormGroup>}
       {is12HoursFormat && <FormGroup controlId="date-time-picker__input-month">
         <ControlLabel>Mer</ControlLabel>
         <FormControl onChange={this.onChangeM} componentClass="select" placeholder="select" value={meridian}>
-           {mer.map((mr) => <option value={mr}>{mr}</option>)}
+           {mer.map((mr) => <option key={mr} value={mr}>{mr}</option>)}
         </FormControl>
       </FormGroup>}
     </div>}
@@ -189,7 +189,6 @@ class CalendarFooter extends React.Component {
 CalendarFooter.propTypes = {
   displayDate: React.PropTypes.object.isRequired,
   onChange: React.PropTypes.func.isRequired,
-  monthLabels: React.PropTypes.array.isRequired,
   years: React.PropTypes.array,
   hours: React.PropTypes.array,
   minutes: React.PropTypes.array,

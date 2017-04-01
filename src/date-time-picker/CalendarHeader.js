@@ -71,12 +71,12 @@ class CalendarHeader extends React.Component {
     return <div className="date-time-picker__header">
       <FormGroup controlId="date-time-picker__input-month">
         <FormControl onChange={this.onChangeMonth} value={monthLabels[displayDate.getMonth()]} componentClass="select" placeholder="select">
-          {calcMonths.map((month) => <option value={month}>{month}</option>)}
+          {calcMonths.map((month) => <option key={month} value={month}>{month}</option>)}
         </FormControl>
       </FormGroup>
       <FormGroup controlId="date-time-picker__input-month">
         <FormControl onChange={this.onChangeYear} componentClass="select" placeholder="select" value={displayDate.getFullYear()}>
-          {calcYears.map((year) => <option value={year}>{year}</option>)}
+          {calcYears.map((year) => <option key={year} value={year}>{year}</option>)}
         </FormControl>
       </FormGroup>
     </div>;
