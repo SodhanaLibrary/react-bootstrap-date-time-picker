@@ -149,7 +149,7 @@ class CalendarFooter extends React.Component {
       }
     }
     calcHours = is12HoursFormat ? displayDate.getHours() >= 12 ? calcHours.filter((hour) => hour >= 12) : calcHours.filter((hour) => hour < 12) : calcHours;
-    calcHours = is12HoursFormat ? calcHours.map(hour => hour > 12 ? hour % 12 : hour) : calcHours;
+    calcHours = is12HoursFormat ? calcHours.map(hour => hour === 0 ? 12 : hour > 12 ? hour % 12 : hour) : calcHours;
     const meridian = displayDate.getHours() >= 12 ? 'PM' : 'AM';
 
     return <div>{(isHrVisible || isMinVisible || isSecVisible) && <div>

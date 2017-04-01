@@ -1,6 +1,6 @@
 {
   "name": "react-bootstrap-date-time-picker",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React Bootstrap Date Time Picker",
   "main": "./lib/react-bootstrap-date-time-picker.js",
   "scripts": {
