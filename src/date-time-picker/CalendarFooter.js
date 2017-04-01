@@ -110,7 +110,7 @@ class CalendarFooter extends React.Component {
   }
 
   render() {
-    const {monthLabels, displayDate, hours, minutes, seconds, is12HoursFormat, isHrVisible, isMinVisible, isSecVisible, from, to, selectedDate} = this.props;
+    const {monthLabels, displayDate, hours, minutes, seconds, is12HoursFormat, isHrVisible, isMinVisible, isSecVisible, from, to, selectedDate, timeOnly} = this.props;
     let calcHours = hours;
     let calcMinutes = minutes;
     let calcSeconds = seconds;
@@ -152,7 +152,9 @@ class CalendarFooter extends React.Component {
     calcHours = is12HoursFormat ? calcHours.map(hour => hour > 12 ? hour % 12 : hour) : calcHours;
     const meridian = displayDate.getHours() >= 12 ? 'PM' : 'AM';
 
-    return <div>{(isHrVisible || isMinVisible || isSecVisible) && <div className="date-time-picker__footer">
+    return <div>{(isHrVisible || isMinVisible || isSecVisible) && <div>
+      {!timeOnly && <hr/>}
+      <div className="date-time-picker__footer">
       {isHrVisible && <FormGroup controlId="date-time-picker__input-month">
         <ControlLabel>Hr</ControlLabel>
         <FormControl onChange={this.onChangeHours} value={is12HoursFormat ? displayDate.getHours() % 12 : displayDate.getHours()} componentClass="select" placeholder="select">
@@ -177,7 +179,7 @@ class CalendarFooter extends React.Component {
            {mer.map((mr) => <option key={mr} value={mr}>{mr}</option>)}
         </FormControl>
       </FormGroup>}
-    </div>}
+    </div></div>}
     <div className="date-time-picker__footer-actions">
       <button onClick={this.props.onCancel} className="btn btn-secondary btn-sm">Cancel</button>
       <button onClick={() => this.props.onApply(displayDate)} disabled={!displayDate} className="btn btn-primary btn-sm">Apply</button>
@@ -200,7 +202,8 @@ CalendarFooter.propTypes = {
   to: React.PropTypes.object,
   selectedDate: React.PropTypes.object,
   onApply: React.PropTypes.func,
-  onCancel: React.PropTypes.func
+  onCancel: React.PropTypes.func,
+  timeOnly: React.PropTypes.bool
 }
 
 CalendarFooter.defaultProps = {
@@ -209,7 +212,8 @@ CalendarFooter.defaultProps = {
   seconds:genOptions(60),
   isSecVisible:true,
   isHrVisible:true,
-  isMinVisible:true
+  isMinVisible:true,
+  timeOnly:false
 }
 
 

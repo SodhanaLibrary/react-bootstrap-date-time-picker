@@ -1,6 +1,6 @@
 import React from 'react';
 import {FormGroup, ControlLabel, HelpBlock} from 'react-bootstrap';
-import DatePicker from './date-time-picker/DateTimePicker';
+import DateTimePicker from './date-time-picker/DateTimePicker';
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 
 export default class App extends React.Component {
@@ -9,7 +9,10 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       format: 'MM/DD/YYYY hh:mm:ss A',
-      calendarOnly: false
+      calendarOnly: false,
+      timeOnly:false,
+      showClearButton:true,
+      showTodayButton:false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleFormatChange = this.handleFormatChange.bind(this);
@@ -49,9 +52,9 @@ export default class App extends React.Component {
         checked:event.target.value
       });
     } else {
-      this.setState({
-        calendarOnly:!this.state.calendarOnly
-      });
+      const obj = {};
+      obj[event.target.value] = !this.state[event.target.value]
+      this.setState(obj);
     }
   }
 
@@ -65,7 +68,19 @@ export default class App extends React.Component {
       }}>
         <FormGroup controlId="change_handler">
           <ControlLabel>Change Handler</ControlLabel>
-          <DatePicker calendarOnly={this.state.calendarOnly} from={this.state.from} to={this.state.to} onChange={this.handleChange} dateFormat={this.state.format} placeholder="Placeholder" value={this.state.date} id="change_handler_example" />
+          <DateTimePicker
+            calendarOnly={this.state.calendarOnly}
+            timeOnly={this.state.timeOnly}
+            from={this.state.from}
+            to={this.state.to}
+            onChange={this.handleChange}
+            dateFormat={this.state.format}
+            placeholder="Placeholder"
+            value={this.state.date}
+            showClearButton={this.state.showClearButton}
+            showTodayButton={this.state.showTodayButton}
+            bsClass="input-group"
+            />
           <HelpBlock>Help</HelpBlock>
         </FormGroup>
         <div className="form-group">
@@ -77,8 +92,26 @@ export default class App extends React.Component {
         </div>
         <div className="form-group">
           <label>
-            <input type="radio"  value="calendarOnly"  checked={this.state.calendarOnly} name="calendar" onClick={this.onCheck.bind(this)}></input>
+            <input type="checkbox"  value="calendarOnly"  checked={this.state.calendarOnly} name="calendar" onClick={this.onCheck.bind(this)}></input>
             &nbsp;Calendar only
+          </label>
+        </div>
+        <div className="form-group">
+          <label>
+            <input type="checkbox"  value="timeOnly"  checked={this.state.timeOnly} name="time" onClick={this.onCheck.bind(this)}></input>
+            &nbsp;Time only
+          </label>
+        </div>
+        <div className="form-group">
+          <label>
+            <input type="checkbox"  value="showClearButton"  checked={this.state.showClearButton} name="clearBtn" onClick={this.onCheck.bind(this)}></input>
+            &nbsp;Show Clear Button
+          </label>
+        </div>
+        <div className="form-group">
+          <label>
+            <input type="checkbox"  value="showTodayButton"  checked={this.state.showTodayButton} name="todayBtn" onClick={this.onCheck.bind(this)}></input>
+            &nbsp;Show Today Button
           </label>
         </div>
         <div className="form-group">

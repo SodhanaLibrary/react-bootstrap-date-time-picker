@@ -337,7 +337,8 @@ class DateTimePicker extends React.Component {
         from={this.props.from}
         to={this.props.to}
         onApply={this.onApply}
-        onCancel={this.onCancel}/>;
+        onCancel={this.onCancel}
+        timeOnly={this.props.timeOnly}/>;
 
     const control = this.props.customControl
       ? React.cloneElement(this.props.customControl, {
@@ -369,7 +370,6 @@ class DateTimePicker extends React.Component {
 
     return <InputGroup
       ref="inputGroup"
-      bsClass={this.props.showClearButton ? this.props.bsClass : ''}
       bsSize={this.props.bsSize}
       id={this.props.id ? `${this.props.id}_group` : null}>
       <Overlay
@@ -380,20 +380,22 @@ class DateTimePicker extends React.Component {
         target={() => ReactDOM.findDOMNode(this.refs.input)}
         placement={this.props.calendarPlacement}
         delayHide={200}>
-        <Popover id={`date-picker-popover-${this.props.instanceCount}`} className="date-picker-popover" title={calendarHeader}>
-          <Calendar
-            cellPadding={this.props.cellPadding}
-            selectedDate={this.state.selectedDate}
-            displayDate={this.state.displayDate}
-            onChange={this.onChangeDate}
-            dayLabels={this.state.dayLabels}
-            weekStartsOnMonday={this.props.weekStartsOnMonday}
-            showTodayButton={this.props.showTodayButton}
-            todayButtonLabel={this.props.todayButtonLabel}
-            footer={!this.props.calendarOnly && calendarFooter}
-            from={this.props.from}
-            to={this.props.to}
-            onApply={this.props.calendarOnly && this.onApply}/>
+        <Popover id={`date-picker-popover-${this.props.instanceCount}`} className="date-picker-popover" title={!this.props.timeOnly && calendarHeader}>
+          <div className="date-time-picker">
+            {!this.props.timeOnly && <Calendar
+              cellPadding={this.props.cellPadding}
+              selectedDate={this.state.selectedDate}
+              displayDate={this.state.displayDate}
+              onChange={this.onChangeDate}
+              dayLabels={this.state.dayLabels}
+              weekStartsOnMonday={this.props.weekStartsOnMonday}
+              showTodayButton={this.props.showTodayButton}
+              todayButtonLabel={this.props.todayButtonLabel}
+              from={this.props.from}
+              to={this.props.to}
+              onApply={this.props.calendarOnly && this.onApply}/>}
+             {!this.props.calendarOnly && calendarFooter}
+           </div>
         </Popover>
       </Overlay>
       <div ref="overlayContainer" style={{position: 'relative'}} />
@@ -443,7 +445,8 @@ DateTimePicker.propTypes = {
   customControl: React.PropTypes.object,
   from: React.PropTypes.object,
   to: React.PropTypes.object,
-  calendarOnly: React.PropTypes.bool
+  calendarOnly: React.PropTypes.bool,
+  timeOnly: React.PropTypes.bool
 }
 
 DateTimePicker.defaultProps = {
@@ -466,7 +469,8 @@ DateTimePicker.defaultProps = {
   },
   from:fromDate,
   to:toDate,
-  calendarOnly: false
+  calendarOnly: false,
+  timeOnly: false
 }
 
 export default DateTimePicker;
