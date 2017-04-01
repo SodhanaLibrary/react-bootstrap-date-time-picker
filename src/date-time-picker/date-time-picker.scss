@@ -1,0 +1,27 @@
+.date-time-picker {
+  &__header {
+    display: flex;
+    justify-content: space-around;
+    .form-group {
+      margin-bottom: 0.1rem;
+    }
+  }
+  &__footer {
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #ccc;
+    margin-top: 8px;
+    padding-top: 8px;
+    .form-group {
+      margin-right: 0.4rem;
+    }
+  }
+  &__footer-actions {
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    text-align: right;
+    .btn-secondary {
+      margin-right: 0.5rem;
+    }
+  }
+}
